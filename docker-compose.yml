@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  bookstore:
+    image: guilhermetaranto/bookstore:latest
+    ports:
+        - "8080:80"
+        - "8043:443"
+    depends_on:
+        - ms-sql-server
+
+  ms-sql-server:
+        image: mcr.microsoft.com/mssql/server:latest
+        container_name: SQLServer
+        environment: 
+            ACCEPT_EULA: "Y"
+            SA_PASSWORD: "yourStrong(!)Password"
+            MSSQL_PID: Express
+        ports:
+            - "1433:1433"
+        volumes:
+            - C:\BookStore\MSSQL:/var/opt/mssql/data  

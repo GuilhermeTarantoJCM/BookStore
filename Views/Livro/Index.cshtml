@@ -1,0 +1,69 @@
+﻿@model BookStore.ViewModels.Criar_EditarLivroViewModel
+
+@{
+    ViewData["Title"] = "Lista de livros";
+}
+
+<h1>Livros</h1>
+
+<p>
+    <a asp-action="Criar">Criar novo livro</a>
+</p>
+<form asp-controller="livros" asp-action="Index" method="get">
+    <p>
+
+        <select asp-for="LivroCategoria" asp-items="Model.Categoria">
+            <option value="">Todos</option>
+        </select>
+
+        Título: <input type="text" name="busca">
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Data de Lançamento
+            </th>
+            <th>
+                Categoria
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Livros) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLancamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { item.Id }) |
+                @Html.ActionLink("Deletar", "Deletar", new { item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

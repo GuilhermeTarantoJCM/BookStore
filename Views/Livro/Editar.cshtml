@@ -1,0 +1,18 @@
+﻿@model BookStore.ViewModels.Criar_EditarLivroViewModel
+
+@{
+    ViewData["Title"] = "Editando livro";
+}
+
+<h1>Edição de Livro</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+
+    @await Html.PartialAsync("Partials/EditarLivroPartial", Model)
+
+    <button type="submit" class="btn btn-primary">Alterar</button>
+    <a asp-action="Index">Voltar para a lista</a>
+}
+

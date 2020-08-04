@@ -1,0 +1,16 @@
+﻿@model BookStore.ViewModels.Criar_EditarLivroViewModel
+
+@{
+    ViewData["Title"] = "Criando um novo livro";
+}
+
+<h1>Novo Livro</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationMessage("Mensagem")
+    @await Html.PartialAsync("Partials/EditarLivroPartial", Model)
+
+    <button type="submit" class="btn btn-primary">Criar</button>
+}

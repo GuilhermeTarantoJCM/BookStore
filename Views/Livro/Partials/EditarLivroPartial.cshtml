@@ -1,0 +1,24 @@
+﻿@model BookStore.ViewModels.Criar_EditarLivroViewModel
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.Nome)
+        @Html.EditorFor(Model => Model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.ISBN)
+        @Html.EditorFor(Model => Model.ISBN, new { htmlAttributes = new { @class = "form-control" } })
+        <span asp-validation-for="ISBN" class="text-danger"></span>
+    </div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.DataLancamento)
+    @Html.EditorFor(Model => Model.DataLancamento, new { htmlAttributes = new { @class = "form-control" } })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(Model => Model.LivroCategoria)
+    @Html.EditorFor(Model => Model.LivroCategoria, new { htmlAttributes = new { @class = "form-control" } })
+    <span asp-validation-for="LivroCategoria" class="text-danger"></span>
+</div>
